@@ -1,36 +1,16 @@
-import React, { useEffect } from "react";
+import React from "react";
+import s from "./Header.module.scss"
 
-import {
-    NavLink,
-} from "react-router-dom";
-
-import { useGetCategories } from "../../customHooks/useGetCategories"
+import HeaderNav from "./HeaderNav/HeaderNav";
+import HeaderIcons from "./HeaderIcons/HeaderIcons";
 
 
 const Header = () => {
 
-    const [categoriesFromHook] = useGetCategories();
-
-    useEffect(() => {
-    }, [categoriesFromHook]);
-
     return (
-        <header>
-            <nav>
-                <ul>
-                    <li>
-                        <NavLink to="/home">Home</NavLink>
-                    </li>
-                    {categoriesFromHook &&
-                        categoriesFromHook.map(({ id, title, alias, image, menuOrder }) => (
-                            <li key={id}>
-                                <NavLink to={'/' + alias}>{title}</NavLink>
-                            </li>
-                        ))
-                    }
-                </ul>
-            </nav>
-            <hr></hr>
+        <header className={s.Header}>
+            <HeaderNav />
+            <HeaderIcons />
         </header>
 
     )

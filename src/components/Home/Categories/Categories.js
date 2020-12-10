@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import { useGetCategories } from "../../../customHooks/useGetCategories";
 
+import s from "./Categories.module.scss"
+
 const Categories = () => {
 
     const [categoriesFromHook] = useGetCategories();
@@ -10,10 +12,12 @@ const Categories = () => {
 
 
     return (
-        <section>
+        <section className={s.Categories}>
             {categoriesFromHook &&
                 categoriesFromHook.map(({ id, title, alias, image, menuOrder }) => (
-                    <img key={id} style={{ margin: "10px" }} src={image} alt={title} />
+                    <div key={id} className={s["Categories-ImgBox"]}>
+                        <img className={s["Categories-Img"]} src={"image"} alt={title} />
+                    </div>
                 ))
             }
         </section>

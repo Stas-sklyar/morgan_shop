@@ -1,0 +1,107 @@
+.Header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 65px;
+    padding: 0 10px;
+
+    &:after {
+        content: "";
+        position: absolute;
+        top: 65px;
+        left: 0;
+        right: 0;
+        display: block;
+        height: 1px;
+        background-color: #DEDEDE;
+    }
+
+    &-Nav {
+
+    }
+
+    &-Menu {
+        margin-block-start: 0;
+        margin-block-end: 0;
+        margin-inline-start: 0;
+        margin-inline-end: 0;
+        padding-inline-start: 0;
+
+        display: flex;
+        align-items: center;
+        list-style: none;
+
+    }
+
+    &-Item {
+        position: relative;
+        margin-right: 50px;
+        font-size: 14px;
+        color: #121212;
+
+        & * {
+            text-decoration: none;
+            color: #121212;
+        }
+
+        &:first-child {
+            &:after {
+                display: none;
+            }
+        }
+
+        &:last-child {
+            margin-right: 0;
+        }
+
+        &:after {
+            content: "";
+            position: absolute;
+            bottom: -15px;
+            display: block;
+            width: 0;
+            height: 2px;
+            background-color: #121212;
+            z-index: 2;
+            transition: all .15s ease-in;
+
+        }
+
+        &:hover {
+            &:after {
+                width: 100%;
+                transition: all .15s ease-in;
+            }
+        }
+    }
+
+    &-Icon {
+        position: relative;
+        margin-right: 85px;
+        &:last-child {
+            margin-right: 0;
+        }
+
+        &:after {
+            content: "";
+            position: absolute;
+            bottom: -11px;
+            left: -28px;
+            display: block;
+            width: 0;
+            height: 2px;
+            background-color: #121212;
+            z-index: 2;
+            transition: all .15s ease-in;
+
+        }
+        &:hover {
+            &:after {
+                width: 80px;
+                transition: all .15s ease-in;
+            }
+        }
+
+    }
+}
