@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { connect } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import s from "../Products.module.scss"
 
@@ -8,8 +9,15 @@ import { useGetProducts } from "../../customHooks/useGetProducts";
 import addProductIcon from "../../img/products/add-product-icon.png"
 
 import SortProducts from "../SortProducts/SortProducts"
+import { addProduct } from "../../actions/actions";
 
 const FloorLamps = ({ targetSort }) => {
+
+    const dispatch = useDispatch();
+
+    const addProductToCart = (e) => {
+        dispatch(addProduct());
+    }
 
     const [methodSort, setMethodSort] = useState(targetSort.value)
 
@@ -38,7 +46,7 @@ const FloorLamps = ({ targetSort }) => {
                                 <img className={s["Product-Img"]} src={image} alt={name} />
                                 <span className={s["Product-Name"]}>{alias}</span>
                                 <span className={s["Product-Price"]}>{"£" + price}</span>
-                                <img className={s["Product-AddProductIcon"]} src={addProductIcon} alt="add product" />
+                                <img onClick={addProductToCart} className={s["Product-AddProductIcon"]} src={addProductIcon} alt="add product" />
                             </div>
                         ))
                 }
