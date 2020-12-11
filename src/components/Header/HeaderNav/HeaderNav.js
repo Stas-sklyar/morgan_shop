@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import {
     NavLink,
 } from "react-router-dom";
@@ -13,9 +13,6 @@ const HeaderNav = () => {
 
     const [categoriesFromHook] = useGetCategories();
 
-    useEffect(() => {
-    }, [categoriesFromHook]);
-
     return (
         <nav className={s["Header-Nav"]}>
             <ul className={s["Header-Menu"]}>
@@ -25,11 +22,12 @@ const HeaderNav = () => {
                     </NavLink>
                 </li>
                 {categoriesFromHook &&
-                    categoriesFromHook.map(({ id, title, alias, image, menuOrder }) => (
-                        <li key={id} className={s["Header-Item"]}>
-                            <NavLink to={'/' + alias}>{title}</NavLink>
-                        </li>
-                    ))
+                    categoriesFromHook.sort((a, b) => a.menuOrder - b.menuOrder)
+                        .map(({ id, title, alias, image, menuOrder }) => (
+                            <li key={id} className={s["Header-Item"]}>
+                                <NavLink to={'/' + alias}>{title}</NavLink>
+                            </li>
+                        ))
                 }
             </ul>
         </nav>

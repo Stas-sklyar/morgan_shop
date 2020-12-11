@@ -1,16 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react"
+import { connect } from "react-redux";
 
 import s from "../Products.module.scss"
-import { useGetProducts } from "../../customHooks/useGetProducts";
+import { useGetProducts } from "../../customHooks/useGetProducts"
 
 import addProductIcon from "../../img/products/add-product-icon.png"
 
 import SortProducts from "../SortProducts/SortProducts"
 
 
-const TableLamps = () => {
+const TableLamps = ({ targetSort }) => {
 
-    let [productsFromHook] = useGetProducts()
+    const [methodSort, setMethodSort] = useState(targetSort.value)
+
+    useEffect(() => {
+        setMethodSort(targetSort.value)
+    }, [targetSort.value])
+
+    let [productsFromHook] = useGetProducts();
+    productsFromHook && productsFromHook.sort((a, b) => b.price - a.price)
+    if (methodSort === "hightToLow") productsFromHook.sort((a, b) => b.price - a.price)
+    else if (methodSort === "lowToHight") productsFromHook.sort((a, b) => a.price - b.price)
+    else if (methodSort === "sortNewness") productsFromHook.sort((a, b) => {
+        let dataA = new Date(a.timeStamp)
+        let dataB = new Date(b.timeStamp)
+        return dataB - dataA
+    })
+
 
     return (
         <>
@@ -32,4 +48,8 @@ const TableLamps = () => {
     )
 }
 
-export default TableLamps
+const mapStateToProps = (state) => ({
+    targetSort: state.sortMethod.methodSort,
+});
+
+export default connect(mapStateToProps)(TableLamps)

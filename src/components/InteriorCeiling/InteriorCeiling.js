@@ -1,4 +1,5 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
+import { connect } from "react-redux";
 
 import s from "../Products.module.scss"
 
@@ -8,8 +9,24 @@ import addProductIcon from "../../img/products/add-product-icon.png"
 
 import SortProducts from "../SortProducts/SortProducts"
 
-const InteriorCeiling = () => {
-    let [productsFromHook] = useGetProducts()
+const InteriorCeiling = ({ targetSort }) => {
+
+    const [methodSort, setMethodSort] = useState(targetSort.value)
+
+    useEffect(() => {
+        setMethodSort(targetSort.value)
+    }, [targetSort.value])
+
+    let [productsFromHook] = useGetProducts();
+    productsFromHook && productsFromHook.sort((a, b) => b.price - a.price)
+    if (methodSort === "hightToLow") productsFromHook.sort((a, b) => b.price - a.price)
+    else if (methodSort === "lowToHight") productsFromHook.sort((a, b) => a.price - b.price)
+    else if (methodSort === "sortNewness") productsFromHook.sort((a, b) => {
+        let dataA = new Date(a.timeStamp)
+        let dataB = new Date(b.timeStamp)
+        return dataB - dataA
+    })
+
 
     return (
         <>
@@ -23,6 +40,7 @@ const InteriorCeiling = () => {
                                 <span className={s["Product-Name"]}>{alias}</span>
                                 <span className={s["Product-Price"]}>{"£" + price}</span>
                                 <img className={s["Product-AddProductIcon"]} src={addProductIcon} alt="add product" />
+                                <span>{timeStamp}</span>
                             </div>
                         ))
                 }
@@ -31,4 +49,8 @@ const InteriorCeiling = () => {
     )
 }
 
-export default InteriorCeiling
+const mapStateToProps = (state) => ({
+    targetSort: state.sortMethod.methodSort,
+});
+
+export default connect(mapStateToProps)(InteriorCeiling)
