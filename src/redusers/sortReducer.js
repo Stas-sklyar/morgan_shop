@@ -1,6 +1,6 @@
 
 const initialState = {
-    methodSort: "hightToLow"
+    methodSort: ""
 }
 
 export const sortReducer = (state = initialState, action) => {
