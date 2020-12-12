@@ -8,6 +8,11 @@ export const addProduct = (payload) => ({
     payload,
 })
 
+export const deleteProduct = (payload) => ({
+    type: "DELETE_PRODUCT",
+    payload,
+})
+
 export const addProductInCart = (product) => ({
     type: "ADD_PRODUCT_IN_CART",
     payload: { ...product },

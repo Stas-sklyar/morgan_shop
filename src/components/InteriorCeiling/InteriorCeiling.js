@@ -10,7 +10,7 @@ import addProductIcon from "../../img/products/add-product-icon.png"
 import removeProductIcon from "../../img/products/remove-product-with-cart.png"
 
 import SortProducts from "../SortProducts/SortProducts"
-import { addProduct, addProductInCart, removeProductInCart } from "../../actions/actions";
+import { addProduct, addProductInCart, deleteProduct, removeProductInCart } from "../../actions/actions";
 
 const InteriorCeiling = ({ targetSort, productsInCart }) => {
 
@@ -23,6 +23,7 @@ const InteriorCeiling = ({ targetSort, productsInCart }) => {
     }
 
     const removeProductWithCart = (e) => {
+        dispatch(deleteProduct());
         dispatch(removeProductInCart(e.target.id))
     }
 
@@ -30,7 +31,7 @@ const InteriorCeiling = ({ targetSort, productsInCart }) => {
 
     let [productsFromHook] = useGetProducts();
 
-    if (productsFromHook != undefined) {
+    if (productsFromHook !== undefined) {
         productsFromHook.sort((a, b) => b.price - a.price)
     }
 

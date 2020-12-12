@@ -23,7 +23,7 @@ const FloorLamps = ({ targetSort }) => {
 
     let [productsFromHook] = useGetProducts();
 
-    if (productsFromHook != undefined) {
+    if (productsFromHook !== undefined) {
         productsFromHook.sort((a, b) => b.price - a.price)
     }
 

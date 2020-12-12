@@ -4,6 +4,9 @@ export const amountProductInCartReducer = (state = 0, action) => {
         case "ADD_PRODUCT":
             return state + 1
 
+        case "DELETE_PRODUCT":
+            return state - 1
+
         default:
             return state
     }

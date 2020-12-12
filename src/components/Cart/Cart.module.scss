@@ -8,4 +8,93 @@
         color: #121212;
         text-transform: uppercase;
     }
+
+    &-Body {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &-Products {
+        width: 100%;
+        max-width: 650px;
+    }
+
+    &-Product {
+    }
+}
+
+.ProductInCart {
+    display: flex;
+    padding-bottom: 25px;
+    padding-left: 55px;
+
+    &-Img {
+        height: 185px;
+    }
+
+    &-Info {
+        height: 185px;
+        width: 100%;
+        margin-left: 25px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        border-bottom: 1px solid #DEDEDE;
+    }
+    
+    &-Text {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &-Name {
+        font-size: 12px;
+        line-height: 22px;
+        letter-spacing: 0.01em;
+        color: #6D6D6D;
+    }
+
+    &-Category {
+        font-size: 18px;
+        line-height: 27px;  
+        color: #121212;
+    }
+
+    &-RemoveProductIcon {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        font-size: 25px;
+        cursor: pointer;
+    }
+
+    &-Nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        padding-bottom: 25px;
+    }
+
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+  }
+  input[type="number"]:hover,
+  input[type="number"]:focus {
+    -moz-appearance: number-input;
+  }
+
+  input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }

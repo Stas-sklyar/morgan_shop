@@ -1,16 +1,30 @@
 import React from "react"
+import { connect } from "react-redux";
 
 import EmptyCart from "./EmptyCart/EmptyCart"
 
 import s from "./Cart.module.scss"
 
-const Cart = () => {
+import ProductsInCart from "./ProductsInCart/ProductsInCart";
+
+const Cart = ({ amountProductsInCart }) => {
+
+
     return (
         <div className={s.Cart}>
             <h1 className={s["Cart-Title"]}>basket</h1>
-            <EmptyCart />
-        </div>
+
+            {amountProductsInCart
+                ? <ProductsInCart />
+                : <EmptyCart />
+            }
+
+        </div >
     )
 }
 
-export default Cart
+const mapStateToProps = (state) => ({
+    amountProductsInCart: state.amountProductsInCart
+});
+
+export default connect(mapStateToProps)(Cart)

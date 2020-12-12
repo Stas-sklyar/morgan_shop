@@ -1,0 +1,21 @@
+.Quantity {
+    display: flex;
+    align-items: center;
+
+    &-Icon {
+        width: 30px;
+        height: 30px;
+    }
+
+    &-Input {
+        margin: 0 8px;
+        width: 30px;
+        height: 30px;
+        padding-left: 10px;
+        border: 1px solid #DEDEDE;
+
+        font-size: 14px;
+        line-height: 21px;
+        color: #121212;
+    }
+}
