@@ -22,10 +22,7 @@ const TableLamps = ({ targetSort }) => {
 
     let [productsFromHook] = useGetProducts();
 
-    if (productsFromHook === undefined) {
-        console.log("Download")
-    }
-    else {
+    if (productsFromHook != undefined) {
         productsFromHook.sort((a, b) => b.price - a.price)
     }
 

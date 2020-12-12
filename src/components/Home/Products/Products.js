@@ -11,19 +11,29 @@ const Products = ({ targetSort }) => {
 
     const [methodSort, setMethodSort] = useState(targetSort.value)
 
+    let [productsFromHook] = useGetProducts();
+
+    if (productsFromHook != undefined) {
+        productsFromHook.sort((a, b) => b.price - a.price)
+    }
+
+    if (productsFromHook) {
+        if (methodSort === "hightToLow") productsFromHook.sort((a, b) => b.price - a.price)
+        else if (methodSort === "lowToHight") productsFromHook.sort((a, b) => a.price - b.price)
+        else if (methodSort === "sortNewness") productsFromHook.sort((a, b) => {
+            let dataA = new Date(a.timeStamp)
+            let dataB = new Date(b.timeStamp)
+            return dataB - dataA
+        })
+    }
+
+
     useEffect(() => {
         setMethodSort(targetSort.value)
+        return () => {
+            setMethodSort("")
+        }
     }, [targetSort.value])
-
-    let [productsFromHook] = useGetProducts();
-    productsFromHook && productsFromHook.sort((a, b) => b.price - a.price)
-    if (methodSort === "hightToLow") productsFromHook.sort((a, b) => b.price - a.price)
-    else if (methodSort === "lowToHight") productsFromHook.sort((a, b) => a.price - b.price)
-    else if (methodSort === "sortNewness") productsFromHook.sort((a, b) => {
-        let dataA = new Date(a.timeStamp)
-        let dataB = new Date(b.timeStamp)
-        return dataB - dataA
-    })
 
     return (
         <div className={s.Products}>
