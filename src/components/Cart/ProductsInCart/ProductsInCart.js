@@ -1,11 +1,19 @@
 import React from "react"
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
+import { deleteProduct, removeProductInCart } from "../../../actions/actions";
 
 import s from "../Cart.module.scss"
 import Order from "../Order/Order"
 import Quantity from "../Quantity/Quantity";
 
 const ProductInCart = ({ productsInCart }) => {
+    const dispatch = useDispatch();
+
+    const removeProductWithCart = (e) => {
+        dispatch(deleteProduct());
+        dispatch(removeProductInCart(e.target.id))
+    }
+
     return (
         <div className={s["Cart-Body"]}>
 
@@ -21,7 +29,7 @@ const ProductInCart = ({ productsInCart }) => {
                                     <div className={s["ProductInCart-Text"]}>
                                         <span className={s["ProductInCart-Name"]}>{name}</span>
                                         <span className={s["ProductInCart-Category"]}>{alias}</span>
-                                        <span className={s["ProductInCart-RemoveProductIcon"]}>	&#215;</span>
+                                        <span onClick={removeProductWithCart} className={s["ProductInCart-RemoveProductIcon"]}>	&#215;</span>
                                     </div>
 
                                     <div className={s["ProductInCart-Nav"]}>

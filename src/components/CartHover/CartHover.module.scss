@@ -1,0 +1,75 @@
+.CartHover {
+    position: absolute;
+    right: 115px;
+    top: 72px;
+    width: 272px;
+    height: auto;
+    min-height: 254px;
+    padding: 20px 10px;
+    background: #FAFAFA;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.08);
+    z-index: 30;
+    opacity: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+    color: #121212;
+
+    &:hover {
+        opacity: 1;
+    }
+
+    &-Link {
+        display: block;
+        width: 250px;
+        height: 35px;
+        background-color: #121212;
+        color: #FAFAFA;
+        text-decoration: none;
+        text-align: center;
+        line-height: 35px;
+        font-size: 12px;
+        text-transform: uppercase;
+        margin: 0 auto;
+    }
+
+    &-Item {
+        display: flex;
+        margin-bottom: 10px;
+
+    }
+
+    &-ProductInfo {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        border-bottom: 1px solid #DEDEDE;
+        padding: 5px 0;
+    }
+
+    &-Img {
+        width: 70px;
+        height: 75px;
+        margin-right: 15px;
+    }
+
+    &-Name {
+        font-size: 12px;
+        line-height: 22px;
+        letter-spacing: 0.01em;
+    }
+
+    &-Price {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 21px;
+    }
+
+    &-Amount {
+        color: #6D6D6D;
+    }
+
+}

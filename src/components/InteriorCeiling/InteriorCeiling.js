@@ -12,6 +12,8 @@ import removeProductIcon from "../../img/products/remove-product-with-cart.png"
 import SortProducts from "../SortProducts/SortProducts"
 import { addProduct, addProductInCart, deleteProduct, removeProductInCart } from "../../actions/actions";
 
+import CartHover from "../CartHover/CartHover"
+
 const InteriorCeiling = ({ targetSort, productsInCart }) => {
 
     const dispatch = useDispatch();
@@ -39,9 +41,7 @@ const InteriorCeiling = ({ targetSort, productsInCart }) => {
         if (methodSort === "hightToLow") productsFromHook.sort((a, b) => b.price - a.price)
         else if (methodSort === "lowToHight") productsFromHook.sort((a, b) => a.price - b.price)
         else if (methodSort === "sortNewness") productsFromHook.sort((a, b) => {
-            let dataA = new Date(a.timeStamp)
-            let dataB = new Date(b.timeStamp)
-            return dataB - dataA
+            return new Date(a.timeStamp) - new Date(b.timeStamp)
         })
     }
 
@@ -57,11 +57,9 @@ const InteriorCeiling = ({ targetSort, productsInCart }) => {
         productsInCart.find((prod) => id === prod.id)
     )
 
-    useEffect(() => {
-    }, [productsInCart])
-
     return (
         <>
+            <CartHover />
             <SortProducts />
             <div className={s.Products}>
                 {productsFromHook &&
@@ -73,7 +71,7 @@ const InteriorCeiling = ({ targetSort, productsInCart }) => {
                                     <span className={s["Product-Name"]}>{alias}</span>
                                     <span className={s["Product-Price"]}>{"£" + price}</span>
                                     <img id={id} onClick={(prodInCart(id)) ? removeProductWithCart : addProductToCart} className={s["Product-AddProductIcon"]}
-                                        src={(prodInCart(id)) ? removeProductIcon : addProductIcon} alt="add product" />
+                                        src={(prodInCart(id)) ? removeProductIcon : addProductIcon} alt="icon" />
                                 </div>
                             )
                         })

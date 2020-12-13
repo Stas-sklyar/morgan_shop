@@ -9,9 +9,8 @@ import s from "./Quantity.module.scss"
 const Quantity = () => {
     return (
         <div className={s.Quantity}>
-            {/* <span>Quantity</span> */}
             <img className={s["Quantity-Icon"]} src={minusIcon} alt="minus" />
-            <input className={s["Quantity-Input"]} type="number" value="1" />
+            <input className={s["Quantity-Input"]} type="number" />
             <img className={s["Quantity-Icon"]} src={plusIcon} alt="plus" />
         </div>
     )

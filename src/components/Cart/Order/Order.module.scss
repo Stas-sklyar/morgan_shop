@@ -6,4 +6,52 @@
     padding: 10px;
 
     border: 1px solid #DEDEDE;
+    font-size: 12px;
+    line-height: 22px;
+    letter-spacing: 0.01em;
+
+    &-Title {
+        color: #6D6D6D;
+        padding-bottom: 10px;
+    }
+
+    &-Item {
+        padding-bottom: 10px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &-Delivery {
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #6D6D6D;
+    }
+
+    &-Total {
+        display: flex;
+        justify-content: space-between;
+        color: #6D6D6D;
+        padding: 15px 0;
+    }
+
+    &-TotalPrice {
+        font-weight: 500;
+        color: #121212;
+        font-size: 14px;
+    }
+
+    &-Link {
+        display: block;
+        width: 250px;
+        height: 35px;
+        background-color: #121212;
+
+        line-height: 35px;
+        text-align: center;
+        letter-spacing: 0.01em;
+        color: #FAFAFA;
+        text-decoration: none;
+        text-transform: uppercase;
+    }
 }

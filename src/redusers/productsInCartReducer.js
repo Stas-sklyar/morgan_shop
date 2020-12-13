@@ -10,7 +10,7 @@ export const productsInCartReducer = (state = initialState, action) => {
 
         case "REMOVE_PRODUCT_IN_CART":
             let targetIndex = state.findIndex((prod) => prod.id === action.id)
-            let copyState = state
+            let copyState = [...state]
             copyState.splice(targetIndex, 1)
             return copyState
 
