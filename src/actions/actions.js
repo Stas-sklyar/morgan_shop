@@ -3,30 +3,27 @@ export const changeMethodSort = (payload) => ({
     payload,
 })
 
-let amountProducts = 0;
-export const addProduct = () => ({
-    type: "ADD_PRODUCT",
-    payload: ++amountProducts,
-})
 
-export const deleteProduct = () => ({
-    type: "DELETE_PRODUCT",
-    payload: --amountProducts,
-})
-
-export const deleteAllProductsInCart = () => ({
-    type: "DELETE_ALL_PRODUCT",
-})
 
 export const addProductInCart = (product) => ({
     type: "ADD_PRODUCT_IN_CART",
-    payload: { ...product },
+    payload: { ...product, amount: 1 },
 })
 
 export const removeProductInCart = (id) => ({
     type: "REMOVE_PRODUCT_IN_CART",
     id,
 })
+
+export const setAmountProductInCart = (id, amount) => ({
+    type: "SET_AMOUNT_PRODUCTS_IN_CART",
+    payload: {
+        id: id,
+        amount: amount,
+    },
+})
+
+
 
 export const removeAllProductInCart = () => ({
     type: "REMOVE_ALL_PRODUCT_IN_CART",

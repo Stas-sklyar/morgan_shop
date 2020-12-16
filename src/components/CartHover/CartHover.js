@@ -8,6 +8,7 @@ import s from "./CartHover.module.scss"
 
 
 const CartHover = ({ productsInCart }) => {
+    const host = "https://morgan-shop.herokuapp.com/"
 
     return (
         <div className={s["CartHover"]}>
@@ -17,7 +18,7 @@ const CartHover = ({ productsInCart }) => {
                         return (
                             <div key={id} className={s["CartHover-Item"]}>
 
-                                <img className={s["CartHover-Img"]} src={image} alt="poduct" />
+                                <img className={s["CartHover-Img"]} src={host + image} alt="poduct" />
                                 <div className={s["CartHover-ProductInfo"]}>
                                     <span className={s["CartHover-Name"]}>{name}</span>
                                     <span className={s["CartHover-Price"]}>

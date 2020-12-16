@@ -49,11 +49,11 @@ const Login = () => {
                 <span className={s["Login-DecorLine"]}>or</span>
 
                 <div className={s["Login-Social"]}>
-                    <button className={s["Login-Button-google"]}>
+                    <button type="button" className={s["Login-Button-google"]}>
                         <img className={s["Login-SocialIcon"]} src={googleIcon} alt="google" />
                         With Google
                         </button>
-                    <button className={s["Login-Button-facebook"]}>
+                    <button type="button" className={s["Login-Button-facebook"]}>
                         <img className={s["Login-SocialIcon"]} src={facebookIcon} alt="facebook" />
                         With Facebook
                         </button>

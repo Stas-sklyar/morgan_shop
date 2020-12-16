@@ -10,22 +10,18 @@ import addProductIcon from "../../img/products/add-product-icon.png"
 import removeProductIcon from "../../img/products/remove-product-with-cart.png"
 
 import SortProducts from "../SortProducts/SortProducts"
-import { addProduct, addProductInCart, deleteProduct, removeProductInCart } from "../../actions/actions";
-
-import CartHover from "../CartHover/CartHover"
+import { addProductInCart, removeProductInCart } from "../../actions/actions";
 
 const InteriorCeiling = ({ targetSort, productsInCart }) => {
     const host = "https://morgan-shop.herokuapp.com/"
     const dispatch = useDispatch()
 
     const addProductToCart = (e) => {
-        dispatch(addProduct());
         let targetProduct = productsFromHook.find((prod) => prod.id === e.target.id)
         dispatch(addProductInCart(targetProduct));
     }
 
     const removeProductWithCart = (e) => {
-        dispatch(deleteProduct());
         dispatch(removeProductInCart(e.target.id))
     }
 
@@ -55,7 +51,6 @@ const InteriorCeiling = ({ targetSort, productsInCart }) => {
 
     return (
         <>
-            <CartHover />
             <SortProducts />
             <div className={s.Products}>
                 {productsFromHook &&

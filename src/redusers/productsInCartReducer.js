@@ -17,6 +17,15 @@ export const productsInCartReducer = (state = initialState, action) => {
         case "REMOVE_ALL_PRODUCT_IN_CART":
             return []
 
+        case "SET_AMOUNT_PRODUCTS_IN_CART":
+            let tempState = [...state]
+            tempState.map((prod) => {
+                if (prod.id === action.payload.id) {
+                    prod.amount = action.payload.amount
+                }
+            })
+            return tempState
+
         default:
             return state
     }

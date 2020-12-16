@@ -7,14 +7,14 @@ import s from "./Cart.module.scss"
 
 import ProductsInCart from "./ProductsInCart/ProductsInCart";
 
-const Cart = ({ amountProductsInCart }) => {
+const Cart = ({ productsInCart }) => {
 
 
     return (
         <div className={s.Cart}>
             <h1 className={s["Cart-Title"]}>basket</h1>
 
-            {amountProductsInCart
+            {productsInCart.length > 0
                 ? <ProductsInCart />
                 : <EmptyCart />
             }
@@ -24,7 +24,7 @@ const Cart = ({ amountProductsInCart }) => {
 }
 
 const mapStateToProps = (state) => ({
-    amountProductsInCart: state.amountProductsInCart
+    productsInCart: state.productsInCart,
 });
 
 export default connect(mapStateToProps)(Cart)

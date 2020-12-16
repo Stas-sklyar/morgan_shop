@@ -1,7 +1,7 @@
 .CartHover {
     position: absolute;
-    right: 115px;
-    top: 72px;
+    right: 0;
+    top: 40px;
     width: 272px;
     height: auto;
     min-height: 254px;
@@ -9,17 +9,13 @@
     background: #FAFAFA;
     box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.08);
     z-index: 30;
-    opacity: 0;
+    opacity: 1;
 
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     
     color: #121212;
-
-    &:hover {
-        opacity: 1;
-    }
 
     &-Link {
         display: block;

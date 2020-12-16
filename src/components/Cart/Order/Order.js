@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { connect, useDispatch } from "react-redux"
 import { NavLink } from "react-router-dom"
-import { removeAllProductInCart, deleteAllProductsInCart } from "../../../actions/actions"
+import { removeAllProductInCart } from "../../../actions/actions"
 
 import s from "./Order.module.scss"
 
@@ -13,14 +13,13 @@ const Order = ({ productsInCart }) => {
         setTotalPrice(() => {
             let tempPrice = 0;
             let priceDelivery = 10;
-            productsInCart.map((prod) => tempPrice += parseInt(prod.price))
+            productsInCart.map((prod) => tempPrice += (parseInt(prod.price) * prod.amount))
             return tempPrice + priceDelivery
         })
     }, [productsInCart])
 
     const deleteAllProducts = () => {
         dispatch(removeAllProductInCart())
-        dispatch(deleteAllProductsInCart())
     }
 
     return (
@@ -28,10 +27,10 @@ const Order = ({ productsInCart }) => {
             <span className={s["Order-Title"]}>Order Summary</span>
 
             {productsInCart &&
-                productsInCart.map(({ id, categoryId, name, alias, price, image, timeStamp }) => {
+                productsInCart.map(({ id, categoryId, name, alias, price, image, timeStamp, amount }) => {
                     return (<div key={id} className={s["Order-Item"]}>
                         <span>{name}</span>
-                        <span>{"£" + price}</span>
+                        <span>{"£" + (price * amount)}</span>
                     </div>
                     )
                 })

@@ -1,6 +1,6 @@
 import React from "react"
 import { connect, useDispatch } from "react-redux";
-import { deleteProduct, removeProductInCart } from "../../../actions/actions";
+import { removeProductInCart } from "../../../actions/actions";
 
 import s from "../Cart.module.scss"
 import Order from "../Order/Order"
@@ -11,7 +11,6 @@ const ProductInCart = ({ productsInCart }) => {
     const dispatch = useDispatch();
 
     const removeProductWithCart = (e) => {
-        dispatch(deleteProduct());
         dispatch(removeProductInCart(e.target.id))
     }
 
@@ -20,7 +19,7 @@ const ProductInCart = ({ productsInCart }) => {
 
             <div className={s["Cart-Products"]}>
                 {productsInCart &&
-                    productsInCart.map(({ id, categoryId, name, alias, price, image, timeStamp }) => {
+                    productsInCart.map(({ id, categoryId, name, alias, price, image, timeStamp, amount }) => {
                         return (
                             <div key={id} className={s["Cart-Product"] + " " + s.ProductInCart}>
                                 <img className={s["ProductInCart-Img"]} src={host + image} alt={name} />
@@ -34,8 +33,8 @@ const ProductInCart = ({ productsInCart }) => {
                                     </div>
 
                                     <div className={s["ProductInCart-Nav"]}>
-                                        <Quantity />
-                                        <span>{"£" + price}</span>
+                                        <Quantity amount={amount} id={id} />
+                                        <span>{"£" + (price * amount)}</span>
                                     </div>
 
                                 </div>
@@ -54,7 +53,6 @@ const ProductInCart = ({ productsInCart }) => {
 
 const mapStateToProps = (state) => ({
     productsInCart: state.productsInCart,
-    amountProductsInCart: state.amountProductsInCart
 });
 
 export default connect(mapStateToProps)(ProductInCart)
