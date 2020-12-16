@@ -7,25 +7,28 @@ import s from "../Products.module.scss"
 import { useGetProducts } from "../../customHooks/useGetProducts";
 
 import addProductIcon from "../../img/products/add-product-icon.png"
+import removeProductIcon from "../../img/products/remove-product-with-cart.png"
 
 import SortProducts from "../SortProducts/SortProducts"
-import { addProduct } from "../../actions/actions";
+import { addProduct, addProductInCart, deleteProduct, removeProductInCart } from "../../actions/actions";
 
-const FloorLamps = ({ targetSort }) => {
-
-    const dispatch = useDispatch();
+const FloorLamps = ({ targetSort, productsInCart }) => {
+    const host = "https://morgan-shop.herokuapp.com/"
+    const dispatch = useDispatch()
 
     const addProductToCart = (e) => {
         dispatch(addProduct());
+        let targetProduct = productsFromHook.find((prod) => prod.id === e.target.id)
+        dispatch(addProductInCart(targetProduct));
     }
 
-    const [methodSort, setMethodSort] = useState(targetSort.value)
+    const removeProductWithCart = (e) => {
+        dispatch(deleteProduct());
+        dispatch(removeProductInCart(e.target.id))
+    }
 
+    const [methodSort, setMethodSort] = useState(targetSort)
     let [productsFromHook] = useGetProducts();
-
-    if (productsFromHook !== undefined) {
-        productsFromHook.sort((a, b) => b.price - a.price)
-    }
 
     if (productsFromHook) {
         if (methodSort === "hightToLow") productsFromHook.sort((a, b) => b.price - a.price)
@@ -37,13 +40,17 @@ const FloorLamps = ({ targetSort }) => {
         })
     }
 
-
     useEffect(() => {
-        setMethodSort(targetSort.value)
+        setMethodSort(targetSort)
         return () => {
             setMethodSort("")
         }
-    }, [targetSort.value])
+    }, [targetSort])
+
+    // cart
+    const prodInCart = (id) => (
+        productsInCart.find((prod) => id === prod.id)
+    )
 
     return (
         <>
@@ -53,10 +60,11 @@ const FloorLamps = ({ targetSort }) => {
                     productsFromHook.filter((product => product.categoryId === "66ef32ef-03ad-48c2-b295-bdfc018b5881"))
                         .map(({ id, categoryId, name, alias, price, image, timeStamp }) => (
                             <div key={id} className={s["Products-Product"] + " " + s.Product}>
-                                <img className={s["Product-Img"]} src={image} alt={name} />
+                                <img className={s["Product-Img"]} src={host + image} alt={name} />
                                 <span className={s["Product-Name"]}>{alias}</span>
                                 <span className={s["Product-Price"]}>{"£" + price}</span>
-                                <img onClick={addProductToCart} className={s["Product-AddProductIcon"]} src={addProductIcon} alt="add product" />
+                                <img id={id} onClick={(prodInCart(id)) ? removeProductWithCart : addProductToCart} className={s["Product-AddProductIcon"]}
+                                    src={(prodInCart(id)) ? removeProductIcon : addProductIcon} alt="icon" />
                             </div>
                         ))
                 }
@@ -67,6 +75,10 @@ const FloorLamps = ({ targetSort }) => {
 
 const mapStateToProps = (state) => ({
     targetSort: state.sortMethod.methodSort,
+    productsInCart: state.productsInCart,
 });
 
 export default connect(mapStateToProps)(FloorLamps)
+
+
+

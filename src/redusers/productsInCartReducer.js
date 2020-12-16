@@ -14,6 +14,9 @@ export const productsInCartReducer = (state = initialState, action) => {
             copyState.splice(targetIndex, 1)
             return copyState
 
+        case "REMOVE_ALL_PRODUCT_IN_CART":
+            return []
+
         default:
             return state
     }

@@ -1,28 +1,33 @@
-import React from "react"
+
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from "react-redux";
 
 import s from "./SortProducts.module.scss"
 
 import { changeMethodSort } from "../../actions/actions"
+import Select from "react-select";
 
 const SortProducts = () => {
+
+    const [selectedOption, setSelectedOption] = useState("hightToLow");
+
+    const options = [
+        { value: 'hightToLow', label: 'Price hight to low' },
+        { value: 'lowToHight', label: 'Price low to hight' },
+        { value: 'sortNewness', label: 'Newness' },
+    ];
+
     const dispatch = useDispatch();
 
-    const handSelectChange = (e) => {
-        const target = e.target;
-        const value = target.value;
 
-        dispatch(changeMethodSort({ value }));
-    };
+    useEffect(() => {
+        dispatch(changeMethodSort(selectedOption.value));
+    }, [selectedOption])
 
     return (
         <div className={s.Sort}>
-            <span className={s["Sort-Title"]}>Sort by:</span>
-            <select onChange={handSelectChange} className={s["Sort-Select"]}>
-                <option value={"hightToLow"} className={s["Sort-Option"]}>Price hight to low</option>
-                <option value={"lowToHight"} className={s["Sort-Option"]}>Price low to hight</option>
-                <option value={"sortNewness"} className={s["Sort-Option"]}>Newness</option>
-            </select>
+            <Select className={s["Sort-Select"]} placeholder="Sort by:"
+                options={options} defaultValue={selectedOption} onChange={setSelectedOption} />
         </div>
     )
 }

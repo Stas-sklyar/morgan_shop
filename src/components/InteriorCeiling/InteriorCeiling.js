@@ -15,8 +15,8 @@ import { addProduct, addProductInCart, deleteProduct, removeProductInCart } from
 import CartHover from "../CartHover/CartHover"
 
 const InteriorCeiling = ({ targetSort, productsInCart }) => {
-
-    const dispatch = useDispatch();
+    const host = "https://morgan-shop.herokuapp.com/"
+    const dispatch = useDispatch()
 
     const addProductToCart = (e) => {
         dispatch(addProduct());
@@ -33,10 +33,6 @@ const InteriorCeiling = ({ targetSort, productsInCart }) => {
 
     let [productsFromHook] = useGetProducts();
 
-    if (productsFromHook !== undefined) {
-        productsFromHook.sort((a, b) => b.price - a.price)
-    }
-
     if (productsFromHook) {
         if (methodSort === "hightToLow") productsFromHook.sort((a, b) => b.price - a.price)
         else if (methodSort === "lowToHight") productsFromHook.sort((a, b) => a.price - b.price)
@@ -46,11 +42,11 @@ const InteriorCeiling = ({ targetSort, productsInCart }) => {
     }
 
     useEffect(() => {
-        setMethodSort(targetSort.value)
+        setMethodSort(targetSort)
         return () => {
             setMethodSort("")
         }
-    }, [targetSort.value])
+    }, [targetSort])
 
     // cart
     const prodInCart = (id) => (
@@ -67,7 +63,7 @@ const InteriorCeiling = ({ targetSort, productsInCart }) => {
                         .map(({ id, categoryId, name, alias, price, image, timeStamp }, index, array) => {
                             return (
                                 <div key={id} className={s["Products-Product"] + " " + s.Product}>
-                                    <img className={s["Product-Img"]} src={image} alt={name} />
+                                    <img className={s["Product-Img"]} src={host + image} alt={name} />
                                     <span className={s["Product-Name"]}>{alias}</span>
                                     <span className={s["Product-Price"]}>{"£" + price}</span>
                                     <img id={id} onClick={(prodInCart(id)) ? removeProductWithCart : addProductToCart} className={s["Product-AddProductIcon"]}

@@ -1,9 +1,21 @@
 import React from "react"
+import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom"
+import { handleFormChangeResetPassword } from "../../../actions/actions";
 
 import s from "./RecoveryPassword.module.scss"
 
 const RecoveryPassword = () => {
+
+    const dispatch = useDispatch();
+
+    const handleInputChange = (e) => {
+        const target = e.target
+        const value = target.value
+
+        dispatch(handleFormChangeResetPassword({ email: value }));
+    };
+
     return (
         <div className={s.RecoveryPassword}>
             <h1 className={s["RecoveryPassword-Title"]}>RESET YOUR PASSWORD</h1>
@@ -12,9 +24,9 @@ const RecoveryPassword = () => {
             <form className={s["RecoveryPassword-Form"]}>
                 <label className={s["RecoveryPassword-Label"]}>
                     Email
-                    <input className={s["RecoveryPassword-Input"]} type="text" />
+                    <input className={s["RecoveryPassword-Input"]} onChange={handleInputChange} type="text" />
                 </label>
-                <button className={s["RecoveryPassword-Button"]} type="submit">SEND A PASSWORD RESET LINK</button>
+                <NavLink className={s["RecoveryPassword-Button"]} to="/reset-password-successful">SEND A PASSWORD RESET LINK</NavLink>
                 <NavLink className={s["RecoveryPassword-Link"]} to={"/login"}>Back to login</NavLink>
             </form>
 

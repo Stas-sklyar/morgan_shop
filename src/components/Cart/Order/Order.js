@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react"
 import { connect, useDispatch } from "react-redux"
 import { NavLink } from "react-router-dom"
+import { removeAllProductInCart, deleteAllProductsInCart } from "../../../actions/actions"
 
 import s from "./Order.module.scss"
 
 const Order = ({ productsInCart }) => {
-    useDispatch()
     const [totalPrice, setTotalPrice] = useState(0)
+    const dispatch = useDispatch()
 
     useEffect(() => {
         setTotalPrice(() => {
@@ -16,6 +17,11 @@ const Order = ({ productsInCart }) => {
             return tempPrice + priceDelivery
         })
     }, [productsInCart])
+
+    const deleteAllProducts = () => {
+        dispatch(removeAllProductInCart())
+        dispatch(deleteAllProductsInCart())
+    }
 
     return (
         <div className={s.Order}>
@@ -41,9 +47,12 @@ const Order = ({ productsInCart }) => {
                 <span className={s["Order-TotalPrice"]}>£{totalPrice}</span>
             </div>
 
-            <NavLink className={s["Order-Link"]} to="/" >checkout</NavLink>
+            <NavLink onClick={deleteAllProducts} className={s["Order-Link"]}
+                to="/order-successful" >checkout</NavLink>
 
-        </div>
+
+
+        </div >
     )
 }
 

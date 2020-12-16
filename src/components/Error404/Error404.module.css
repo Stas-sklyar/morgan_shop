@@ -1,0 +1,43 @@
+.Error404 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #121212;
+}
+
+.Error404-Img {
+  width: 100%;
+  max-width: 440px;
+  height: auto;
+}
+
+.Error404-Label {
+  font-size: 26px;
+  line-height: 39px;
+  letter-spacing: -0.01em;
+  padding-bottom: 25px;
+}
+
+.Error404-Link {
+  width: 255px;
+  height: 35px;
+  border: 1px solid #121212;
+  font-size: 12px;
+  line-height: 35px;
+  text-align: center;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #121212;
+}
+/*# sourceMappingURL=Error404.module.css.map */

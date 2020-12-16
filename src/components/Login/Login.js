@@ -5,26 +5,41 @@ import s from "./Login.module.scss"
 
 import googleIcon from "../../img/login/google-icon.png"
 import facebookIcon from "../../img/login/facebook-icon.png"
+import { useDispatch } from "react-redux";
+import { handleFormChangeLogin } from "../../actions/actions";
 
 const Login = () => {
+    const dispatch = useDispatch();
+
+    const handleInputChange = (e) => {
+        const target = e.target
+        const value = target.value
+        const name = target.name
+
+        dispatch(handleFormChangeLogin({ [name]: value }));
+    };
+
+
+
+
     return (
         <div className={s.Login}>
             <h1 className={s["Login-Title"]}>Login</h1>
 
             <form className={s["Login-Form"]}>
 
-                <label htmlFor="loginEmail" className={s["Login-Label"]}>
-                    Email
-                </label>
-                <input id="loginEmail" className={s["Login-Input"]} />
+                <label htmlFor="loginEmail" className={s["Login-Label"]}>Email</label>
+                <input id="loginEmail" className={s["Login-Input"]} name="userEmail"
+                    onChange={handleInputChange} placeholder="Enter your email" />
 
                 <label htmlFor={"loginPassword"} className={s["Login-Label"]}>
                     <span>Password</span>
                     <NavLink to="/regovery-pasword" className={s["Login-PasswordRecoveryLabel"]}>Forgotten your password?</NavLink>
                 </label>
-                <input id={"loginPassword"} className={s["Login-Input"]} />
+                <input id={"loginPassword"} className={s["Login-Input"]} name="userPassword"
+                    onChange={handleInputChange} placeholder="Enter your password" />
 
-                <button className={s["Login-Button"]}>Login</button>
+                <button type="submit" className={s["Login-Button"]}>Login</button>
 
                 <div className={s["Login-CreateAccountBox"]}>
                     <span>Don't have an account?</span>

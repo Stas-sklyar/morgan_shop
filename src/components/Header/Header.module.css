@@ -1,0 +1,155 @@
+.Header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  height: 65px;
+  padding: 0 10px;
+}
+
+.Header:after {
+  content: "";
+  position: absolute;
+  top: 65px;
+  left: 0;
+  right: 0;
+  display: block;
+  height: 1px;
+  background-color: #DEDEDE;
+}
+
+.Header-Menu {
+  -webkit-margin-before: 0;
+          margin-block-start: 0;
+  -webkit-margin-after: 0;
+          margin-block-end: 0;
+  -webkit-margin-start: 0;
+          margin-inline-start: 0;
+  -webkit-margin-end: 0;
+          margin-inline-end: 0;
+  -webkit-padding-start: 0;
+          padding-inline-start: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  list-style: none;
+}
+
+.Header-Item {
+  position: relative;
+  margin-right: 50px;
+  font-size: 14px;
+  color: #121212;
+}
+
+.Header-Item * {
+  text-decoration: none;
+  color: #121212;
+}
+
+.Header-Item:first-child:after {
+  display: none;
+}
+
+.Header-Item:last-child {
+  margin-right: 0;
+}
+
+.Header-Item:after {
+  content: "";
+  position: absolute;
+  bottom: -15px;
+  display: block;
+  width: 0;
+  height: 2px;
+  background-color: #121212;
+  z-index: 2;
+  -webkit-transition: all .15s ease-in;
+  transition: all .15s ease-in;
+}
+
+.Header-Item:hover:after {
+  width: 100%;
+  -webkit-transition: all .15s ease-in;
+  transition: all .15s ease-in;
+}
+
+.Header-Item_active:after {
+  content: "";
+  position: absolute;
+  bottom: -15px;
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #121212;
+  z-index: 2;
+  -webkit-transition: all .15s ease-in;
+  transition: all .15s ease-in;
+}
+
+.Header-Icon {
+  position: relative;
+  margin-right: 85px;
+  cursor: pointer;
+}
+
+.Header-Icon:last-child {
+  margin-right: 0;
+}
+
+.Header-Icon:after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: -28px;
+  display: block;
+  width: 0;
+  height: 2px;
+  background-color: #121212;
+  z-index: 2;
+  -webkit-transition: all .15s ease-in;
+  transition: all .15s ease-in;
+}
+
+.Header-Icon:hover:after {
+  width: 80px;
+  -webkit-transition: all .15s ease-in;
+  transition: all .15s ease-in;
+}
+
+.Header-Icon_active:after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: -28px;
+  display: block;
+  width: 80px;
+  height: 2px;
+  background-color: #121212;
+  z-index: 2;
+  -webkit-transition: all .15s ease-in;
+  transition: all .15s ease-in;
+}
+
+.Header-Icon_cart {
+  font-size: 12px;
+  letter-spacing: 0.01em;
+  color: #121212;
+  text-decoration: none;
+}
+
+.Header-Icon_cart span {
+  display: inline-block;
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+}
+/*# sourceMappingURL=Header.module.css.map */

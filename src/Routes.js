@@ -11,6 +11,8 @@ import Cart from "./components/Cart/Cart"
 import Login from "./components/Login/Login"
 import Registration from "./components/Login/Registration/Registration"
 import RecoveryPassword from "./components/Login/RecoveryPassword/RecoveryPassword"
+import OrderSuccessful from "./components/Cart/OrderSuccessful/OrderSuccessful";
+import ResetPasswordSuccessful from "./components/Login/RecoveryPassword/ResetPasswordSuccessful/ResetPasswordSuccessful";
 
 const Routes = () => {
 
@@ -42,6 +44,12 @@ const Routes = () => {
             </Route>
             <Route path="/cart" exact>
                 <Cart />
+            </Route>
+            <Route path="/order-successful" exact>
+                <OrderSuccessful />
+            </Route>
+            <Route path="/reset-password-successful" exact>
+                <ResetPasswordSuccessful />
             </Route>
             <Route path="*">
                 <Error404 />

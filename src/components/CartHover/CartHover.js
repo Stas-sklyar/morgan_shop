@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React from "react"
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 
@@ -8,10 +8,6 @@ import s from "./CartHover.module.scss"
 
 
 const CartHover = ({ productsInCart }) => {
-
-    useEffect(() => {
-        console.log(productsInCart)
-    }, [productsInCart])
 
     return (
         <div className={s["CartHover"]}>

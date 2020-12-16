@@ -7,6 +7,7 @@ import Order from "../Order/Order"
 import Quantity from "../Quantity/Quantity";
 
 const ProductInCart = ({ productsInCart }) => {
+    const host = "https://morgan-shop.herokuapp.com/"
     const dispatch = useDispatch();
 
     const removeProductWithCart = (e) => {
@@ -22,7 +23,7 @@ const ProductInCart = ({ productsInCart }) => {
                     productsInCart.map(({ id, categoryId, name, alias, price, image, timeStamp }) => {
                         return (
                             <div key={id} className={s["Cart-Product"] + " " + s.ProductInCart}>
-                                <img className={s["ProductInCart-Img"]} src={image} alt={name} />
+                                <img className={s["ProductInCart-Img"]} src={host + image} alt={name} />
 
                                 <div className={s["ProductInCart-Info"]}>
 

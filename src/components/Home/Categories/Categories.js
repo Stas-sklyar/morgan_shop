@@ -4,6 +4,7 @@ import { useGetCategories } from "../../../customHooks/useGetCategories";
 import s from "./Categories.module.scss"
 
 const Categories = () => {
+    const host = "https://morgan-shop.herokuapp.com/"
 
     const [categoriesFromHook] = useGetCategories();
 
@@ -16,7 +17,7 @@ const Categories = () => {
             {categoriesFromHook &&
                 categoriesFromHook.map(({ id, title, alias, image, menuOrder }) => (
                     <div key={id} className={s["Categories-ImgBox"]}>
-                        <img className={s["Categories-Img"]} src={"image"} alt={title} />
+                        <img className={s["Categories-Img"]} src={host + image} alt={title} />
                     </div>
                 ))
             }
