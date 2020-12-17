@@ -18,7 +18,9 @@
     }
 
     &-Nav {
-
+        @media screen and(max-width: 950px) {
+            display: none;
+        }
     }
 
     &-Menu {
@@ -93,6 +95,9 @@
     &-Icon {
         position: relative;
         margin-right: 85px;
+        @media screen and(max-width: 950px) {
+            margin-right: 30px;
+        }
         cursor: pointer;
         &:last-child {
             margin-right: 0;
@@ -154,6 +159,12 @@
                 transform: translateY(-5px);
             }
         }
+
+        &_search {
+            @media screen and(max-width: 950px) {
+                display: none;
+            }
+        }
         
     }
 
@@ -165,5 +176,20 @@
         right: 0;
         background-color: transparent;
         z-index: 10;
+    }
+
+    &-Burger {
+        display: none;
+        @media screen and(max-width: 950px) {
+            display: block;
+        }
+        cursor: pointer;
+    }
+
+    &-Logo {
+        display: none;
+        @media screen and(max-width: 950px) {
+            display: block;
+        }
     }
 }

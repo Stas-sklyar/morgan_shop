@@ -18,7 +18,7 @@ const HeaderIcons = ({ productsInCart }) => {
     return (
         <>
             <ul className={s["Header-Menu"]}>
-                <li className={s["Header-Icon"]}>
+                <li className={s["Header-Icon"] + " " + s["Header-Icon_search"]}>
                     <img src={searchIcon} alt="search" />
                 </li>
                 <li className={s["Header-Icon"]}>
@@ -27,7 +27,8 @@ const HeaderIcons = ({ productsInCart }) => {
                     </NavLink>
                 </li>
                 <li onMouseEnter={() => setCartOpen(true)}
-                    onClick={() => cartOpen ? setCartOpen(false) : setCartOpen(true)} className={s["Header-Icon"]}>
+                    onClick={() => cartOpen ? setCartOpen(false) : setCartOpen(true)}
+                    className={s["Header-Icon"]}>
                     <span
                         className={s["Header-Icon_cart"]}
                         activeClassName={s["Header-Icon_active"]}>

@@ -24,7 +24,8 @@ const RecoveryPassword = () => {
             <form className={s["RecoveryPassword-Form"]}>
                 <label className={s["RecoveryPassword-Label"]}>
                     Email
-                    <input className={s["RecoveryPassword-Input"]} onChange={handleInputChange} type="text" />
+                    <input className={s["RecoveryPassword-Input"]} onChange={handleInputChange}
+                        type="text" placeholder="Enter your email" />
                 </label>
                 <NavLink className={s["RecoveryPassword-Button"]} to="/reset-password-successful">SEND A PASSWORD RESET LINK</NavLink>
                 <NavLink className={s["RecoveryPassword-Link"]} to={"/login"}>Back to login</NavLink>

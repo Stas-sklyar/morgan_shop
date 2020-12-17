@@ -1,56 +1,70 @@
-.Login {
+.Registration {
+    width: 100%;
+    max-width: 370px;
+    margin: 0 auto;
     color: #121212;
 
     &-Title {
-        text-align: center;
         font-size: 18px;
-        font-weight: 400;
         line-height: 27px;
+        text-align: center;
+        font-weight: normal;
+        text-transform: uppercase;
     }
 
     &-Form {
-        width: 100%;
-        max-width: 368px;
         display: flex;
         flex-direction: column;
-        margin: 0 auto;
     }
 
     &-Label {
         display: flex;
-        justify-content: space-between;
+        flex-direction: column;
+        padding-bottom: 30px;
+
         font-size: 14px;
         line-height: 21px;
-        font-weight: 400;
-    }
-
-    &-PasswordRecoveryLabel {
-        font-size: 12px;
-        text-decoration: underline;
-        color: #121212;
     }
 
     &-Input {
-        height: 40px;
-        margin-bottom: 30px;
-        padding: 10px;
-        background-color: transparent;
+        width: 100%;
         border: 1px solid #6D6D6D;
+        background-color: transparent;
+        height: 40px;
+        padding: 0 10px;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 21px;
+
+        &::placeholder {
+            font-weight: normal;
+        }
+    }
+
+    &-Info {
+        font-size: 12px;
+        line-height: 22px;
+        letter-spacing: 0.01em;
+        color: #6D6D6D;
+        
+        &_link {
+            text-decoration-line: underline;
+            cursor: pointer;
+        }
     }
 
     &-Button {
-        margin-top: 6px;
-        background-color: #121212;
         height: 45px;
+        background-color: #121212;
+
         font-weight: 500;
         font-size: 16px;
-        line-height: 45px;
         text-align: center;
         letter-spacing: 0.02em;
-        color: #FAFAFA;
+        line-height: 45px;
         text-transform: uppercase;
-        border: none;
         cursor: pointer;
+        color: #FAFAFA;
 
         &-google, &-facebook {
             background-color: transparent;
@@ -70,17 +84,19 @@
         }
     }
 
-    &-CreateAccountBox {
+    &-LoginBox {
         display: flex;
         justify-content: space-between;
-        padding: 20px 0 20px 0;
+        padding: 20px 0 30px 0;
 
-        & * {
-            color: #121212;
-            font-size: 12px;
-            font-weight: 400;
-            line-height: 18px;
-        }
+        font-size: 12px;
+        line-height: 22px;
+        letter-spacing: 0.01em;
+        color: #121212;
+    }
+
+    &-Link {
+        color: #121212;
     }
 
     &-DecorLine {
@@ -111,12 +127,16 @@
         }
     }
 
+    
     &-Social {
         display: flex;
         justify-content: space-between;
+
+        padding-bottom: 50px;
     }
 
     &-SocialIcon {
         margin-right: 15px;
     }
+    
 }

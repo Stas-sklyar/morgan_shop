@@ -35,6 +35,11 @@ export const handleFormChangeLogin = (formData) => ({
     payload: formData,
 });
 
+export const handleFormChangeRegistration = (formData) => ({
+    type: "REGISTRATION_HANDLE_FORM_CHANGE",
+    payload: formData,
+});
+
 
 export const handleFormChangeResetPassword = (value) => ({
     type: "RESET_PASSWORD_HANDLE_FORM_CHANGE",
