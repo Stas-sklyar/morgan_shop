@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import s from "./Header.module.scss"
 
 import HeaderNav from "./HeaderNav/HeaderNav";
@@ -6,14 +6,19 @@ import HeaderIcons from "./HeaderIcons/HeaderIcons";
 
 import logo from "../../img/header/logo.png"
 import burgerIcon from "../../img/header/burger-icon.svg"
+import closeMenuIcon from "../../img/header/close-menu-icon.svg"
+import AdaptiveMenu from "./AdaptiveMenu/AdaptiveMenu"
 
 
 const Header = () => {
+    const [menuOpen, setMenuOpen] = useState(false);
 
     return (
         <header className={s.Header}>
             <div className={s["Header-Burger"]}>
-                <img src={burgerIcon} alt="burger" />
+                {menuOpen ? <img onClick={() => setMenuOpen(!menuOpen)} src={closeMenuIcon} alt="burger" />
+                    : <img onClick={() => setMenuOpen(!menuOpen)} src={burgerIcon} alt="burger" />}
+                {menuOpen ? <AdaptiveMenu /> : null}
             </div>
             <div className={s["Header-Logo"]}>
                 <img src={logo} alt="logo" />

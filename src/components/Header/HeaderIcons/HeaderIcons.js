@@ -14,26 +14,23 @@ import CartHover from "../../CartHover/CartHover";
 const HeaderIcons = ({ productsInCart }) => {
     const [cartOpen, setCartOpen] = useState(false);
 
-
     return (
         <>
             <ul className={s["Header-Menu"]}>
                 <li className={s["Header-Icon"] + " " + s["Header-Icon_search"]}>
                     <img src={searchIcon} alt="search" />
                 </li>
-                <li className={s["Header-Icon"]}>
+                <li className={s["Header-Icon"] + " " + s["Header-Icon_login"]}>
                     <NavLink to="/login" activeClassName={s["Header-Icon_active"]}>
                         <img src={loginIcon} alt="login" />
                     </NavLink>
                 </li>
-                <li onMouseEnter={() => setCartOpen(true)}
-                    onClick={() => cartOpen ? setCartOpen(false) : setCartOpen(true)}
-                    className={s["Header-Icon"]}>
+                <li onClick={() => cartOpen ? setCartOpen(false) : setCartOpen(true)}
+                    className={s["Header-Icon"] + " " + s["Header-Icon_cart"]}>
                     <span
-                        className={s["Header-Icon_cart"]}
-                        activeClassName={s["Header-Icon_active"]}>
+                        className={s["Header-Icon_cart"]}>
                         <img src={cartIcon} alt="cart" />
-                        <span>{productsInCart.length}</span>
+                        <div>{productsInCart.length}</div>
                         {cartOpen ? <CartHover /> : null}
                     </span>
                 </li>

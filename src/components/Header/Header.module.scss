@@ -4,7 +4,6 @@
     align-items: center;
     width: 100%;
     height: 65px;
-    padding: 0 10px;
 
     &:after {
         content: "";
@@ -60,7 +59,7 @@
         &:after {
             content: "";
             position: absolute;
-            bottom: -15px;
+            bottom: -25px;
             display: block;
             width: 0;
             height: 2px;
@@ -81,7 +80,7 @@
             &:after {
                 content: "";
                 position: absolute;
-                bottom: -15px;
+                bottom: -25px;
                 display: block;
                 width: 100%;
                 height: 2px;
@@ -115,7 +114,7 @@
         &:after {
             content: "";
             position: absolute;
-            bottom: -10px;
+            bottom: -20px;
             left: -28px;
             display: block;
             width: 0;
@@ -124,11 +123,19 @@
             z-index: 2;
             transition: all .15s ease-in;
 
+            @media screen and(max-width: 950px) {
+                left: -15px;
+            }
+
         }
         &:hover {
             &:after {
                 width: 80px;
                 transition: all .15s ease-in;
+
+                @media screen and(max-width: 950px) {
+                    width: 50px;
+                }
             }
         }
 
@@ -136,7 +143,7 @@
             &:after {
                 content: "";
                 position: absolute;
-                bottom: -10px;
+                bottom: -20px;
                 left: -28px;
                 display: block;
                 width: 80px;
@@ -144,26 +151,32 @@
                 background-color: #121212;
                 z-index: 2;
                 transition: all .15s ease-in;
+                
+                @media screen and(max-width: 950px) {
+                    width: 50px;
+                    left: -15px;
+                }
             }
 
         }
 
         &_cart {
-            font-size: 12px;
+            font-size: 14px;
             letter-spacing: 0.01em;
             color: #121212;
             text-decoration: none;
-
-            & span {
-                display: inline-block;
-                transform: translateY(-5px);
-            }
+            display: flex;
+            align-items: center;
         }
 
         &_search {
             @media screen and(max-width: 950px) {
                 display: none;
             }
+        }
+
+        &_login, &_cart {
+
         }
         
     }

@@ -11,8 +11,8 @@ body {
   max-width: 1136px;
   margin: 0 auto;
   background-color: #FAFAFA;
-  padding: 10px;
   overflow-x: hidden;
+  padding: 0 10px;
 }
 
 code {
