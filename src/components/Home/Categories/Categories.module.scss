@@ -7,6 +7,8 @@
     gap: 8px;
 
     &-ImgBox {
+        position: relative;
+        overflow: hidden;
         
         &:nth-of-type(1) {
             grid-row: 1 / 2;
@@ -44,9 +46,33 @@
             }
         }
     }
+
+    &-Link {
+        text-decoration: none;
+        color: #121212;
+    }
     
     &-Img {
         width: 100%;
         height: 100%;
+        transition: all .3s ease-in-out;
+
+        &:hover {
+            transform: scale(1.1);
+            transition: all .3s ease-in-out;
+        }
+    }
+
+    &-Label {
+        position: absolute;
+        top: 15px;
+        left: 30px;
+
+        font-size: 14px;
+        line-height: 21px;
+
+        &_light {
+            color: #FAFAFA;
+        }
     }
 }

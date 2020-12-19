@@ -2,21 +2,35 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+
+    padding-bottom: 50px;
 }
 
 .Product {
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: space-between;
     margin: 4px;
     width: 270px;
     height: 358px;
     background-color: #F0F0F0;
+    cursor: pointer;
+    overflow: hidden;
 
     &-Img {
         width: 100%;
         height: auto;
+        transition: all .2s ease-in;
+
+        &:hover {
+            transform: scale(1.1);
+            transition: all .2s ease-in;
+
+            @media screen and (max-width: 950px) {
+                transform: none;
+            }
+        }
     }
 
     &-Name, &-Price {
@@ -41,13 +55,15 @@
         width: 20px;
         height: 20px;
         cursor: pointer;
+        transition: all .2s ease-in;
 
         &:hover {
-            transform: scale(1.1);
+            transform: scale(1.2);
+            transition: all .2s ease-in;
         }
     }
 
-    @media screen and (max-width: 425px) {
+    @media screen and (max-width: 590px) {
         width: 144px;
         height: 220px;
     }

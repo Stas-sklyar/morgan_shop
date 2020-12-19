@@ -8,6 +8,7 @@ import logo from "../../img/header/logo.png"
 import burgerIcon from "../../img/header/burger-icon.svg"
 import closeMenuIcon from "../../img/header/close-menu-icon.svg"
 import AdaptiveMenu from "./AdaptiveMenu/AdaptiveMenu"
+import { NavLink } from "react-router-dom";
 
 
 const Header = () => {
@@ -21,7 +22,9 @@ const Header = () => {
                 {menuOpen ? <AdaptiveMenu /> : null}
             </div>
             <div className={s["Header-Logo"]}>
-                <img src={logo} alt="logo" />
+                <NavLink to="/">
+                    <img src={logo} alt="logo" />
+                </NavLink>
             </div>
             <HeaderNav />
             <HeaderIcons />

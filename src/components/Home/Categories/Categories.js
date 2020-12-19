@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { NavLink } from "react-router-dom";
 import { useGetCategories } from "../../../customHooks/useGetCategories";
 
 import s from "./Categories.module.scss"
@@ -17,7 +18,10 @@ const Categories = () => {
             {categoriesFromHook &&
                 categoriesFromHook.map(({ id, title, alias, image, menuOrder }) => (
                     <div key={id} className={s["Categories-ImgBox"]}>
-                        <img className={s["Categories-Img"]} src={host + image} alt={title} />
+                        <NavLink className={s["Categories-Link"]} to={'/' + alias}>
+                            <img className={s["Categories-Img"]} src={host + image} alt={title} />
+                            <div className={s["Categories-Label"] + " " + ((title === "Table lamps") ? s["Categories-Label_light"] : null)}>{title}</div>
+                        </NavLink>
                     </div>
                 ))
             }

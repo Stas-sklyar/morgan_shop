@@ -26,15 +26,17 @@ const Order = ({ productsInCart }) => {
         <div className={s.Order}>
             <span className={s["Order-Title"]}>Order Summary</span>
 
-            {productsInCart &&
-                productsInCart.map(({ id, categoryId, name, alias, price, image, timeStamp, amount }) => {
-                    return (<div key={id} className={s["Order-Item"]}>
-                        <span>{name}</span>
-                        <span>{"£" + (price * amount)}</span>
-                    </div>
-                    )
-                })
-            }
+            <ul className={s["Order-List"]}>
+                {productsInCart &&
+                    productsInCart.map(({ id, categoryId, name, alias, price, image, timeStamp, amount }) => {
+                        return (<div key={id} className={s["Order-Item"]}>
+                            <span>{name}</span>
+                            <span>{"£" + (price * amount) + ".00"}</span>
+                        </div>
+                        )
+                    })
+                }
+            </ul>
 
             <div className={s["Order-Delivery"]}>
                 <span>Express Delivery </span>
@@ -43,7 +45,7 @@ const Order = ({ productsInCart }) => {
 
             <div className={s["Order-Total"]}>
                 <span>Estimated Total</span>
-                <span className={s["Order-TotalPrice"]}>£{totalPrice}</span>
+                <span className={s["Order-TotalPrice"]}>{"£" + totalPrice + ".00"}</span>
             </div>
 
             <NavLink onClick={deleteAllProducts} className={s["Order-Link"]}
