@@ -2,9 +2,13 @@
     position: absolute;
     right: 0;
     top: 50px;
-    width: 272px;
+    width: 285px;
     height: auto;
     min-height: 254px;
+    max-height: 400px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
     padding: 20px 10px;
     background: #FAFAFA;
     box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.08);

@@ -27,25 +27,25 @@ const Registration = () => {
                 <label className={s["Registration-Label"]}>
                     Full name
                     <input name="userName" onChange={handleInputChange}
-                        className={s["Registration-Input"]} placeholder="Enter your First and Last name" />
+                        className={s["Registration-Input"]} placeholder="Enter your First and Last name" required />
                 </label>
 
                 <label className={s["Registration-Label"]}>
                     Email
-                    <input name="userEmail" onChange={handleInputChange}
-                        className={s["Registration-Input"]} placeholder="Enter your email" />
+                    <input type="email" name="userEmail" onChange={handleInputChange}
+                        className={s["Registration-Input"]} placeholder="Enter your email" required />
                 </label>
 
                 <label className={s["Registration-Label"]}>
                     Password (min 6 char)
-                    <input name="userPassword" onChange={handleInputChange}
-                        className={s["Registration-Input"]} placeholder="Enter your password" />
+                    <input type="password" name="userPassword" onChange={handleInputChange}
+                        className={s["Registration-Input"]} placeholder="Enter your password" required />
                 </label>
 
                 <p className={s["Registration-Info"]}>
                     By creating an account you agree to the website <span className={s["Registration-Info_link"]}>terms and conditions</span> and our <span className={s["Registration-Info_link"]}>privacy notice</span>.
                 </p>
-                <button className={s["Registration-Button"]} type="button">CREATE AN ACCOUNT</button>
+                <button className={s["Registration-Button"]} type="submit">CREATE AN ACCOUNT</button>
             </form>
 
             <div className={s["Registration-LoginBox"]}>

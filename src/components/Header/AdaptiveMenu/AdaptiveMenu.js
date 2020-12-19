@@ -4,8 +4,9 @@ import { useGetCategories } from "../../../customHooks/useGetCategories";
 import s from "./AdaptiveMenu.module.scss"
 
 
-const AdaptiveMenu = () => {
+const AdaptiveMenu = (props) => {
     const [categoriesFromHook] = useGetCategories();
+    console.log(props.active)
 
     return (
         <div className={s.AdaptiveMenu}>

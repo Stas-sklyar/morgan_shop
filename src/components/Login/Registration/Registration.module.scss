@@ -32,12 +32,21 @@
         background-color: transparent;
         height: 40px;
         padding: 0 10px;
+        
         font-weight: 600;
         font-size: 14px;
         line-height: 21px;
+        color: #121212;
 
         &::placeholder {
             font-weight: normal;
+            font-size: 14px;
+            line-height: 21px;
+            color: #6D6D6D;
+        }
+
+        &:active, &:focus {
+            border: 1px solid #121212;
         }
     }
 

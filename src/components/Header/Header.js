@@ -18,9 +18,12 @@ const Header = () => {
         <header className={s.Header}>
             <div className={s["Header-Wrapper"]}>
                 <div className={s["Header-Burger"]}>
-                    {menuOpen ? <img onClick={() => setMenuOpen(!menuOpen)} src={closeMenuIcon} alt="burger" />
+                    {menuOpen
+                        ? <img onClick={() => setMenuOpen(!menuOpen)} src={closeMenuIcon} alt="burger" />
                         : <img onClick={() => setMenuOpen(!menuOpen)} src={burgerIcon} alt="burger" />}
-                    {menuOpen ? <AdaptiveMenu /> : null}
+                    {menuOpen
+                        ? <div onClick={() => setMenuOpen(!menuOpen)}><AdaptiveMenu /></div>
+                        : null}
                 </div>
                 <div className={s["Header-Logo"]}>
                     <NavLink to="/">
@@ -30,7 +33,7 @@ const Header = () => {
                 <HeaderNav />
                 <HeaderIcons />
             </div>
-        </header>
+        </header >
 
     )
 }
