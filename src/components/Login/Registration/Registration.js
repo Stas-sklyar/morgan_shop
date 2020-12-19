@@ -1,15 +1,19 @@
-import React from "react"
+import React, { useState } from "react"
 import { NavLink } from "react-router-dom"
 
 import s from "./Registration.module.scss"
 
 import googleIcon from "../../../img/login/google-icon.png"
 import facebookIcon from "../../../img/login/facebook-icon.png"
+import eyeOn from "../../../img/login/eye-on-icon.svg"
+import eyeOff from "../../../img/login/eye-off-icon.svg"
+
 import { useDispatch } from "react-redux"
 import { handleFormChangeRegistration } from "../../../actions/actions"
 
 const Registration = () => {
     const dispatch = useDispatch();
+    const [passwordHide, setPasswordHide] = useState(true)
 
     const handleInputChange = (e) => {
         const target = e.target
@@ -38,8 +42,11 @@ const Registration = () => {
 
                 <label className={s["Registration-Label"]}>
                     Password (min 6 char)
-                    <input type="password" name="userPassword" onChange={handleInputChange}
+                    <input type={passwordHide ? "password" : "text"} name="userPassword" onChange={handleInputChange}
                         className={s["Registration-Input"]} placeholder="Enter your password" required />
+                    <img onClick={() => setPasswordHide((prevValue) => !prevValue)}
+                        src={passwordHide ? eyeOff : eyeOn}
+                        className={s["Registration-PasswordIcon"]} />
                 </label>
 
                 <p className={s["Registration-Info"]}>

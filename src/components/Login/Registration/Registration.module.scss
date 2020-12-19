@@ -18,6 +18,7 @@
     }
 
     &-Label {
+        position: relative;
         display: flex;
         flex-direction: column;
         padding-bottom: 30px;
@@ -149,4 +150,10 @@
         margin-right: 15px;
     }
     
+    &-PasswordIcon {
+        position: absolute;
+        right: 10px;
+        top: 30px;
+        cursor: pointer;
+    }
 }

@@ -1,3 +1,4 @@
+
 .Login {
     color: #121212;
 
@@ -17,6 +18,7 @@
     }
 
     &-Label {
+        position: relative;
         display: flex;
         justify-content: space-between;
         font-size: 14px;
@@ -52,6 +54,13 @@
         &:active, &:focus {
             border: 1px solid #121212;
         }
+    }
+
+    &-PasswordIcon {
+        position: absolute;
+        right: 10px;
+        top: 30px;
+        cursor: pointer;
     }
 
     &-Button {
