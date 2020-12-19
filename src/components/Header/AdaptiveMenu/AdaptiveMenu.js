@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
 import { useGetCategories } from "../../../customHooks/useGetCategories";
 import s from "./AdaptiveMenu.module.scss"

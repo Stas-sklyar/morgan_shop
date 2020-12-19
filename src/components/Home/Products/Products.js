@@ -16,6 +16,7 @@ const Products = ({ targetSort, productsInCart }) => {
     const host = "https://morgan-shop.herokuapp.com/"
     const dispatch = useDispatch()
 
+    // add/remove product to/whith cart
     const addProductToCart = (e) => {
         let targetProduct = productsFromHook.find((prod) => prod.id === e.target.id)
         dispatch(addProductInCart(targetProduct));
@@ -24,7 +25,10 @@ const Products = ({ targetSort, productsInCart }) => {
     const removeProductWithCart = (e) => {
         dispatch(removeProductInCart(e.target.id))
     }
+    // add/remove product to/whith cart
 
+
+    // sort
     const [methodSort, setMethodSort] = useState(targetSort)
     let [productsFromHook] = useGetProducts();
 
@@ -44,28 +48,45 @@ const Products = ({ targetSort, productsInCart }) => {
             setMethodSort("")
         }
     }, [targetSort])
+    // sort
+
 
     // cart
     const prodInCart = (id) => (
         productsInCart.find((prod) => id === prod.id)
     )
+    // cart
+
+
+    // show more
+    const [amountShowProd, setAmountShowProd] = useState(12)
+    // show more
+
 
     return (
         <>
             <SortProducts />
             <div className={s.Products}>
                 {productsFromHook &&
-                    productsFromHook.map(({ id, categoryId, name, alias, price, image, timeStamp }) => (
-                        <div key={id} className={s["Products-Product"] + " " + s.Product}>
-                            <img className={s["Product-Img"]} src={host + image} alt={name} />
-                            <span className={s["Product-Name"]}>{alias}</span>
-                            <span className={s["Product-Price"]}>{"£" + price}</span>
-                            <img id={id} onClick={(prodInCart(id)) ? removeProductWithCart : addProductToCart} className={s["Product-AddProductIcon"]}
-                                src={(prodInCart(id)) ? removeProductIcon : addProductIcon} alt="icon" />
-                        </div>
+                    productsFromHook.map(({ id, categoryId, name, alias, price, image, timeStamp }, index) => (
+
+                        (amountShowProd > index) ? (
+                            <div key={id} className={s["Products-Product"] + " " + s.Product} styles={{ display: (amountShowProd > index) ? "block" : "none" }}>
+                                <img className={s["Product-Img"]} src={host + image} alt={name} />
+                                <span className={s["Product-Name"]}>{alias}</span>
+                                <span className={s["Product-Price"]}>{"£" + price + ".00"}</span>
+                                <img id={id} onClick={(prodInCart(id)) ? removeProductWithCart : addProductToCart} className={s["Product-AddProductIcon"]}
+                                    src={(prodInCart(id)) ? removeProductIcon : addProductIcon} alt="icon" />
+                            </div>) : null
                     ))
                 }
             </div>
+
+            {productsFromHook &&
+                amountShowProd < productsFromHook.length
+                ? <div onClick={() => setAmountShowProd((prevValue) => prevValue + 8)} className={s["Product-ShowMoreBtn"]}> Show more</div>
+                : null
+            }
         </>
     )
 }

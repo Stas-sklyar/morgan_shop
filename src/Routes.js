@@ -18,7 +18,7 @@ const Routes = () => {
 
     return (
         <Switch>
-            <Route path="/" exact>
+            <Route path="/ms-hw-build/" exact>
                 <Home />
             </Route>
             <Route path="/table-lamps" exact>
