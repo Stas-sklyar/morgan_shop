@@ -6,6 +6,7 @@ import { Provider } from "react-redux"
 import { store } from "./store"
 
 import Header from "./components/Header/Header"
+import Scroll from "./components/Scroll/Scroll"
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
       <Router>
         <Header />
         <Routes />
+        <Scroll />
       </Router>
     </Provider>
   )

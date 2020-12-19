@@ -16,18 +16,20 @@ const Header = () => {
 
     return (
         <header className={s.Header}>
-            <div className={s["Header-Burger"]}>
-                {menuOpen ? <img onClick={() => setMenuOpen(!menuOpen)} src={closeMenuIcon} alt="burger" />
-                    : <img onClick={() => setMenuOpen(!menuOpen)} src={burgerIcon} alt="burger" />}
-                {menuOpen ? <AdaptiveMenu /> : null}
+            <div className={s["Header-Wrapper"]}>
+                <div className={s["Header-Burger"]}>
+                    {menuOpen ? <img onClick={() => setMenuOpen(!menuOpen)} src={closeMenuIcon} alt="burger" />
+                        : <img onClick={() => setMenuOpen(!menuOpen)} src={burgerIcon} alt="burger" />}
+                    {menuOpen ? <AdaptiveMenu /> : null}
+                </div>
+                <div className={s["Header-Logo"]}>
+                    <NavLink to="/">
+                        <img src={logo} alt="logo" />
+                    </NavLink>
+                </div>
+                <HeaderNav />
+                <HeaderIcons />
             </div>
-            <div className={s["Header-Logo"]}>
-                <NavLink to="/">
-                    <img src={logo} alt="logo" />
-                </NavLink>
-            </div>
-            <HeaderNav />
-            <HeaderIcons />
         </header>
 
     )
