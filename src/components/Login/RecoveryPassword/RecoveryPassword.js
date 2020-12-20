@@ -1,20 +1,19 @@
 import React from "react"
-import { useDispatch } from "react-redux";
+import { useDispatch } from "react-redux"
 import { NavLink } from "react-router-dom"
-import { handleFormChangeResetPassword } from "../../../actions/actions";
+import { handleFormChangeResetPassword } from "../../../actions/actions"
 
 import s from "./RecoveryPassword.module.scss"
 
 const RecoveryPassword = () => {
-
-    const dispatch = useDispatch();
+    const dispatch = useDispatch()
 
     const handleInputChange = (e) => {
         const target = e.target
         const value = target.value
 
-        dispatch(handleFormChangeResetPassword({ email: value }));
-    };
+        dispatch(handleFormChangeResetPassword({ email: value }))
+    }
 
     return (
         <div className={s.RecoveryPassword}>

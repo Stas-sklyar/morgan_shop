@@ -1,17 +1,17 @@
 import React from "react"
-import { connect, useDispatch } from "react-redux";
-import { NavLink } from "react-router-dom";
-import { removeProductInCart } from "../../../actions/actions";
+import { connect, useDispatch } from "react-redux"
+import { NavLink } from "react-router-dom"
+import { removeProductInCart } from "../../../actions/actions"
 
 import s from "../Cart.module.scss"
 import Order from "../Order/Order"
-import Quantity from "../Quantity/Quantity";
+import Quantity from "../Quantity/Quantity"
 
 import deleteProductIcon from "../../../img/cart/delete-product-icon.svg"
 
 const ProductInCart = ({ productsInCart }) => {
     const host = "https://morgan-shop.herokuapp.com/"
-    const dispatch = useDispatch();
+    const dispatch = useDispatch()
 
     const removeProductWithCart = (e) => {
         dispatch(removeProductInCart(e.target.id))

@@ -11,8 +11,8 @@ const Order = ({ productsInCart }) => {
 
     useEffect(() => {
         setTotalPrice(() => {
-            let tempPrice = 0;
-            let priceDelivery = 10;
+            let tempPrice = 0
+            let priceDelivery = 10
             productsInCart.map((prod) => tempPrice += (parseInt(prod.price) * prod.amount))
             return tempPrice + priceDelivery
         })

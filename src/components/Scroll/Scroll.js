@@ -13,7 +13,7 @@ const Scroll = () => {
         });
     }
 
-    const [offset, setOffset] = useState(0);
+    const [offset, setOffset] = useState(0)
 
     useEffect(() => {
         window.onscroll = () => {
@@ -22,8 +22,8 @@ const Scroll = () => {
     }, []);
 
     return (
-        <div className={s.Scroll} onClick={offset > 1500 ? scrollToTop : null}
-            style={{ opacity: offset > 1500 ? 1 : 0, cursor: offset > 1500 ? "pointer" : "default" }} >
+        <div className={s.Scroll} onClick={offset > 1000 ? scrollToTop : null}
+            style={{ opacity: offset > 1000 ? 1 : 0, cursor: offset > 1000 ? "pointer" : "default" }} >
             <img className={s["Scroll-Icon"]} src={scrollIcon} alt="scroll to top" />
             <span className={s["Scroll-Text"]}>Top</span>
         </div >

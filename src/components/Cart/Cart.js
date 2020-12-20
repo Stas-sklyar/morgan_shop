@@ -1,11 +1,11 @@
 import React from "react"
-import { connect } from "react-redux";
+import { connect } from "react-redux"
 
 import EmptyCart from "./EmptyCart/EmptyCart"
 
 import s from "./Cart.module.scss"
 
-import ProductsInCart from "./ProductsInCart/ProductsInCart";
+import ProductsInCart from "./ProductsInCart/ProductsInCart"
 
 const Cart = ({ productsInCart }) => {
 
@@ -25,6 +25,6 @@ const Cart = ({ productsInCart }) => {
 
 const mapStateToProps = (state) => ({
     productsInCart: state.productsInCart,
-});
+})
 
 export default connect(mapStateToProps)(Cart)

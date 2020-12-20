@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom"
 
 import s from "./Login.module.scss"
 
@@ -8,12 +8,11 @@ import facebookIcon from "../../img/login/facebook-icon.png"
 import eyeOn from "../../img/login/eye-on-icon.svg"
 import eyeOff from "../../img/login/eye-off-icon.svg"
 
-
 import { useDispatch } from "react-redux";
-import { handleFormChangeLogin } from "../../actions/actions";
+import { handleFormChangeLogin } from "../../actions/actions"
 
 const Login = () => {
-    const dispatch = useDispatch();
+    const dispatch = useDispatch()
     const [passwordHide, setPasswordHide] = useState(true)
 
     const handleInputChange = (e) => {
@@ -21,10 +20,8 @@ const Login = () => {
         const value = target.value
         const name = target.name
 
-        dispatch(handleFormChangeLogin({ [name]: value }));
+        dispatch(handleFormChangeLogin({ [name]: value }))
     };
-
-
 
 
     return (
@@ -43,7 +40,7 @@ const Login = () => {
                         className={s["Login-PasswordRecoveryLabel"]}>Forgotten your password?</NavLink>
                     <img onClick={() => setPasswordHide((prevValue) => !prevValue)}
                         src={passwordHide ? eyeOff : eyeOn}
-                        className={s["Login-PasswordIcon"]} />
+                        className={s["Login-PasswordIcon"]} alt="icon" />
                 </label>
                 <input type={passwordHide ? "password" : "text"} id={"loginPassword"} className={s["Login-Input"]} name="userPassword"
                     onChange={handleInputChange} placeholder="Enter your password" required >

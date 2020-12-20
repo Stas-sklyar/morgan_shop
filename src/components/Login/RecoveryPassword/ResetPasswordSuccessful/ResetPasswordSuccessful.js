@@ -3,6 +3,7 @@ import React from "react"
 import s from "./ResetPasswordSuccessful.module.scss"
 
 import resetPasswordSuccessful from "../../../../img/login/reset-password-successful.svg"
+
 import { connect } from "react-redux"
 
 const ResetPasswordSuccessful = (emailFromRedux) => {
@@ -20,6 +21,6 @@ const ResetPasswordSuccessful = (emailFromRedux) => {
 
 const mapStateToProps = (state) => ({
     email: state.resetPassword.email.email
-});
+})
 
 export default connect(mapStateToProps)(ResetPasswordSuccessful)

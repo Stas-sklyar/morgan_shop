@@ -1,17 +1,13 @@
-import React, { useEffect } from "react";
-import { NavLink } from "react-router-dom";
-import { useGetCategories } from "../../../customHooks/useGetCategories";
+import React from "react"
+import { NavLink } from "react-router-dom"
+import { useGetCategories } from "../../../customHooks/useGetCategories"
 
 import s from "./Categories.module.scss"
 
 const Categories = () => {
     const host = "https://morgan-shop.herokuapp.com/"
 
-    const [categoriesFromHook] = useGetCategories();
-
-    useEffect(() => {
-    }, [categoriesFromHook]);
-
+    const [categoriesFromHook] = useGetCategories()
 
     return (
         <section className={s.Categories}>

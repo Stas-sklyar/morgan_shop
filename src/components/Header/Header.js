@@ -1,18 +1,18 @@
-import React, { useState } from "react";
+import React, { useState } from "react"
 import s from "./Header.module.scss"
 
-import HeaderNav from "./HeaderNav/HeaderNav";
-import HeaderIcons from "./HeaderIcons/HeaderIcons";
+import HeaderNav from "./HeaderNav/HeaderNav"
+import HeaderIcons from "./HeaderIcons/HeaderIcons"
 
 import logo from "../../img/header/logo.png"
 import burgerIcon from "../../img/header/burger-icon.svg"
 import closeMenuIcon from "../../img/header/close-menu-icon.svg"
 import AdaptiveMenu from "./AdaptiveMenu/AdaptiveMenu"
-import { NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom"
 
 
 const Header = () => {
-    const [menuOpen, setMenuOpen] = useState(false);
+    const [menuOpen, setMenuOpen] = useState(false)
 
     return (
         <header className={s.Header}>

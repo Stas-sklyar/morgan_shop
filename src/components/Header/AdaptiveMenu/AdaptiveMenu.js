@@ -1,12 +1,11 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import { useGetCategories } from "../../../customHooks/useGetCategories";
+import React from "react"
+import { NavLink } from "react-router-dom"
+import { useGetCategories } from "../../../customHooks/useGetCategories"
 import s from "./AdaptiveMenu.module.scss"
 
 
 const AdaptiveMenu = (props) => {
-    const [categoriesFromHook] = useGetCategories();
-    console.log(props.active)
+    const [categoriesFromHook] = useGetCategories()
 
     return (
         <div className={s.AdaptiveMenu}>

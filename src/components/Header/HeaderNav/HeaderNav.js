@@ -1,16 +1,12 @@
-import React from "react";
-import {
-    NavLink,
-} from "react-router-dom";
+import React from "react"
+import { NavLink } from "react-router-dom"
 import s from "../Header.module.scss"
-
 
 import logo from "../../../img/header/logo.png"
 
 import { useGetCategories } from "../../../customHooks/useGetCategories"
 
 const HeaderNav = () => {
-
     const [categoriesFromHook] = useGetCategories();
 
     return (

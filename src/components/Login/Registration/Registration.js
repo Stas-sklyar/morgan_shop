@@ -20,8 +20,8 @@ const Registration = () => {
         const value = target.value
         const name = target.name
 
-        dispatch(handleFormChangeRegistration({ [name]: value }));
-    };
+        dispatch(handleFormChangeRegistration({ [name]: value }))
+    }
 
     return (
         <div className={s.Registration}>
@@ -46,7 +46,7 @@ const Registration = () => {
                         className={s["Registration-Input"]} placeholder="Enter your password" required />
                     <img onClick={() => setPasswordHide((prevValue) => !prevValue)}
                         src={passwordHide ? eyeOff : eyeOn}
-                        className={s["Registration-PasswordIcon"]} />
+                        className={s["Registration-PasswordIcon"]} alt="icon" />
                 </label>
 
                 <p className={s["Registration-Info"]}>

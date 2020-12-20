@@ -1,40 +1,48 @@
 import React, { useEffect, useState } from "react"
-import { connect } from "react-redux";
-import { useDispatch } from "react-redux";
+import { connect } from "react-redux"
+import { useDispatch } from "react-redux"
 
 import s from "../Products.module.scss"
 
-import { useGetProducts } from "../../customHooks/useGetProducts";
+import { useGetProducts } from "../../customHooks/useGetProducts"
 
 import addProductIcon from "../../img/products/add-product-icon.png"
 import removeProductIcon from "../../img/products/remove-product-with-cart.png"
 
 import SortProducts from "../SortProducts/SortProducts"
-import { addProductInCart, removeProductInCart } from "../../actions/actions";
+import { addProductInCart, removeProductInCart } from "../../actions/actions"
 
 const FloorLamps = ({ targetSort, productsInCart }) => {
     const host = "https://morgan-shop.herokuapp.com/"
     const dispatch = useDispatch()
 
+
+    // interaction with cart
     const addProductToCart = (e) => {
         let targetProduct = productsFromHook.find((prod) => prod.id === e.target.id)
-        dispatch(addProductInCart(targetProduct));
+        dispatch(addProductInCart(targetProduct))
     }
 
     const removeProductWithCart = (e) => {
         dispatch(removeProductInCart(e.target.id))
     }
 
-    const [methodSort, setMethodSort] = useState(targetSort)
-    let [productsFromHook] = useGetProducts();
+    const prodInCart = (id) => (
+        productsInCart.find((prod) => id === prod.id)
+    )
+    // interaction with cart
+
+
+    // set method sort
+    const [methodSort, setMethodSort] = useState("")
+
+    let [productsFromHook] = useGetProducts()
 
     if (productsFromHook) {
         if (methodSort === "hightToLow") productsFromHook.sort((a, b) => b.price - a.price)
         else if (methodSort === "lowToHight") productsFromHook.sort((a, b) => a.price - b.price)
         else if (methodSort === "sortNewness") productsFromHook.sort((a, b) => {
-            let dataA = new Date(a.timeStamp)
-            let dataB = new Date(b.timeStamp)
-            return dataB - dataA
+            return new Date(a.timeStamp) - new Date(b.timeStamp)
         })
     }
 
@@ -44,11 +52,8 @@ const FloorLamps = ({ targetSort, productsInCart }) => {
             setMethodSort("")
         }
     }, [targetSort])
+    // set method sort
 
-    // cart
-    const prodInCart = (id) => (
-        productsInCart.find((prod) => id === prod.id)
-    )
 
     return (
         <>
@@ -56,15 +61,18 @@ const FloorLamps = ({ targetSort, productsInCart }) => {
             <div className={s.Products}>
                 {productsFromHook &&
                     productsFromHook.filter((product => product.categoryId === "66ef32ef-03ad-48c2-b295-bdfc018b5881"))
-                        .map(({ id, categoryId, name, alias, price, image, timeStamp }) => (
-                            <div key={id} className={s["Products-Product"] + " " + s.Product}>
-                                <img className={s["Product-Img"]} src={host + image} alt={name} />
-                                <span className={s["Product-Name"]}>{alias}</span>
-                                <span className={s["Product-Price"]}>{"£" + price}</span>
-                                <img id={id} onClick={(prodInCart(id)) ? removeProductWithCart : addProductToCart} className={s["Product-AddProductIcon"]}
-                                    src={(prodInCart(id)) ? removeProductIcon : addProductIcon} alt="icon" />
-                            </div>
-                        ))
+                        .map(({ id, categoryId, name, alias, price, image, timeStamp }, index, array) => {
+                            return (
+                                <div key={id} className={s["Products-Product"] + " " + s.Product}>
+                                    <img className={s["Product-Img"]} src={host + image} alt={name} />
+                                    <span className={s["Product-Name"]}>{alias}</span>
+                                    <span className={s["Product-Price"]}>{"£" + price + ".00"}</span>
+                                    <img id={id} onClick={(prodInCart(id)) ? removeProductWithCart : addProductToCart}
+                                        className={s["Product-AddProductIcon"]}
+                                        src={(prodInCart(id)) ? removeProductIcon : addProductIcon} alt="icon" />
+                                </div>
+                            )
+                        })
                 }
             </div>
         </>
